@@ -47,4 +47,4 @@ Route::get('notes/{note}', function (Note $note) {
     return view('notes.view', ['note' => $note, 'user' => $user]);
 })->name('notes.view');
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

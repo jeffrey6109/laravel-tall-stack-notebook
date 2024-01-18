@@ -4,7 +4,6 @@ namespace App\Jobs;
 
 use App\Models\Note;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -28,14 +27,14 @@ class SendEmail implements ShouldQueue
      */
     public function handle(): void
     {
-        $noteUrl = config('app.url') . '/notes/' . $this->note->id;
+        $noteUrl = config('app.url').'/notes/'.$this->note->id;
 
         $emailContent = "Hello, you've received a new note. View it here: {$noteUrl}";
 
-        Mail::raw($emailContent, function($message) {
+        Mail::raw($emailContent, function ($message) {
             $message->from('tranxnotebook@admin.com', 'Tran-X Notebook')
                 ->to($this->note->recipient)
-                ->subject('You have a new note from ' . $this->note->user->name);
+                ->subject('You have a new note from '.$this->note->user->name);
         });
     }
 }

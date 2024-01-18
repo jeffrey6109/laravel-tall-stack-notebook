@@ -37,8 +37,7 @@ class SendScheduledNotes extends Command
         $noteCount = $notes->count();
         $this->info("Sending {$noteCount} scheduled notes.");
 
-        foreach ($notes as $note)
-        {
+        foreach ($notes as $note) {
             SendEmail::dispatch($note);
         }
     }

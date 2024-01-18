@@ -4,7 +4,6 @@ namespace App\Policies;
 
 use App\Models\Note;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class NotePolicy
 {
@@ -46,21 +45,5 @@ class NotePolicy
     public function delete(User $user, Note $note): bool
     {
         return $user->id === $note->user_id;
-    }
-
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Note $note): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Note $note): bool
-    {
-        //
     }
 }
